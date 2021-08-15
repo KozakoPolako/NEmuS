@@ -1,0 +1,5 @@
+node_modules
+dist/images/*
+dist/css/*
+dist/js/*
+src/images/*
