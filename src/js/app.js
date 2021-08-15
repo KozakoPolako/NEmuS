@@ -1,5 +1,7 @@
 //window.onscroll = function() {myFunction()};
 //lista tytułow
+
+
 const titles = document.querySelectorAll(".title");
 const table = document.querySelector(".row");
 
@@ -55,7 +57,8 @@ let chosen = {};
 titles.forEach(element => {
   element.addEventListener("click", function(){
     
-    element.className +=" chosen";
+    element.classList.add("chosen");
+    //console.dir(element);
     const classes = element.className.split(" ");
     element.classList.remove(classes[1]);
     chosen = this;
@@ -95,6 +98,7 @@ titles.forEach(element => {
   // })
   
 });
+
 
 console.log("to jest to zajebiście śmiga, jak zła");
 
