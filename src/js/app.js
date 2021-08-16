@@ -83,8 +83,14 @@ getGames()
       table.style.pointerEvents = "";
       document.body.style.overflow = "";
       blur.remove();
-      this.remove();
+      back_btn.remove();
+      play_btn.remove();
+      
       //addPos(chosen.children[0]);
+    };
+
+    const play = function () {
+      console.log("play");
     };
     //zaznaczony tytuł
     let chosen = {};
@@ -93,7 +99,7 @@ getGames()
       element.addEventListener("click", function (e) {
         
         addPos(e.target);
-        console.dir(e.target);
+        //console.dir(e.target);
 
         element.classList.add("chosen");
         //console.dir(element);
@@ -110,31 +116,16 @@ getGames()
 
         //blur.style.top = window.scrollY;
         document.body.insertBefore(blur, document.body.lastChild);
+        document.body.insertBefore(play_btn, document.body.lastChild);
         document.body.insertBefore(back_btn, document.body.lastChild);
         back_btn.addEventListener("click", back);
+        play_btn.addEventListener("click", play);
 
         //element.style +=" top: calc(50% - "+rect.height/2+") ; left: calc(50% - "+rect.width/2+") ;"; 
         //element.style +=" top: 50% ; left: 50% ;"; 
 
 
       });
-
-      element.addEventListener("mouseover", function () {
-        //play_btn.style.top =element.style.top;
-        //play_btn.style.left = element.style.left;
-
-        //play_btn.style.width = element.style.width;
-        //play_btn.style.height = element.style.height;
-        //element.appendChild(play_btn);
-
-
-
-      });
-      
-      //addPos(element.children[0]);
-      // element.addEventListener("mouseout", e => {
-      //   element.removeChild(play_btn);
-      // })
 
     });
 

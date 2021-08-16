@@ -142,13 +142,25 @@ img {
    }
 
    .playBtn{
-     //z-index: 20;
-     position: absolute;
-     
-     background-color: transparent;
-     color: white;
-     font-size:20px;
-     
+    position: fixed;
+    z-index: 10;
+    top: 70%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    font-size: 30px;
+    color: #f0f0f0;
+    border: 7px solid;
+    border-radius: 100px;
+    width: 200px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+    box-shadow: 0 5px 5px black;    
+    margin-top: 3px;
+    padding-top: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
    }
    
   .blur{
@@ -174,7 +186,7 @@ img {
     color: #f0f0f0;
     border: 7px solid;
     border-radius: 100px;
-    width: fit-content;
+    width: 200px;
     padding-left: 15px;
     padding-right: 15px;
     margin: auto;
@@ -182,7 +194,15 @@ img {
     margin-top: 3px;
     padding-top: 10px;
     letter-spacing: 2px;
+    text-align: center;
     cursor: pointer;
 
     
+  }
+  .playBtn:hover {
+    transform:translate(-50%,-50%) scale(1.1);
+  }
+
+  .backBtn:hover {
+    transform:translate(-50%,-50%) scale(1.1);
   }
