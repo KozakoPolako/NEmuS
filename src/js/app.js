@@ -6,26 +6,26 @@ import "regenerator-runtime/runtime";
 const getGames = async () => {
   const bag = document.querySelector(".row");
   //const games = new Array();
-  const res = await fetch("http://localhost:8081/list");
-  const games = await res.json();
-  // fetch("http://localhost:8081/list")
-  //   .then(res => res.json())
-  //   .then(res => {
-  //     games.push(...res);
-  //   });
-  console.dir(games);
-  let title;
-  let img;
-  games.forEach(game => {
+  try {
+    const res = await fetch("http://localhost:8081/list");
+    const games = await res.json();
+    console.dir(games);
+    let title;
+    let img;
+    games.forEach(game => {
 
-    title = document.createElement("div");
-    img = document.createElement("img");
-    title.classList.add("title");
-    img.src = `http://localhost:8081/${game}/${game}.jpg`;
-    title.appendChild(img);
-    bag.appendChild(title);
-    console.log(`http://localhost:8081/games/${game}.jpg`);
-  });
+      title = document.createElement("div");
+      img = document.createElement("img");
+      title.classList.add("title");
+      img.src = `http://localhost:8081/${game}/${game}.jpg`;
+      title.appendChild(img);
+      bag.appendChild(title);
+      console.log(`http://localhost:8081/games/${game}.jpg`);
+    });
+  } catch(e) {
+    console.error(e);
+  }
+  
 
 };
 
