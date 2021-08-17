@@ -1,7 +1,7 @@
 
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-import "./Emulator";
+import Emulator from "./Emulator";
 
 
 /**
@@ -70,9 +70,10 @@ getGames()
 
     //Screen where a game is played
     const screen = document.createElement("canvas");
+    screen.classList.add("screen");
 
     //
-    const emulator = new Emulator(); 
+    const emulator = new Emulator(screen); 
 
     //Style tag which contains position of specific title 
     const style = document.createElement('style');
@@ -119,16 +120,28 @@ getGames()
     /**
      * Determinate how back button works
      */
-    const play = () => {
+    const play = async () => {
 
       //gameScreen.style.backgroundColor ="rgba(255,255,255,0.0)";
       
-      
+      console.dir(chosen);
       gameScreen.classList.add("active");
       document.body.insertBefore(return_btn, document.body.firstChildlastChild);
       return_btn.addEventListener("click", ret);
+      gameScreen.appendChild(screen);
 
-      //gameScreen.style.backgroundColor = "rgba(0,0,0,1.0)";
+      try {
+        const res = await fetch(`http://localhost:8081/${chosen.children[0].name}/${chosen.children[0].name}.nes`);
+        const blob = await res.blob();
+        emulator.loadGame(blob);
+        emulator.start();
+      } catch(e) {
+        console.error(e);
+      }
+        
+      
+
+      
     };
 
     /**
@@ -138,6 +151,7 @@ getGames()
       back();
       return_btn.remove();
       console.log("jestem");
+      emulator.stop();
     };
     
     let chosen = {};

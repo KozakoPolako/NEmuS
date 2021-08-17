@@ -250,3 +250,14 @@ img {
   .returnBtn:hover{
     transform:translate(-50%,-50%) scale(1.1);
   }
+
+  .screen {
+    position: fixed;
+    z-index: 22;
+    top: 30%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    width: 510px;
+    height: 480px;
+    background-color: white ;
+  }

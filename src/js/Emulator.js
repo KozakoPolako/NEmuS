@@ -7,7 +7,7 @@ import KeyboardController from "./KeyboardController";
 
 export default class Emulator {
     constructor(display) {
-        this.screen = new Screen(document.querySelector(display));
+        this.screen = new Screen(display);
 
         this.speakers = new Speakers({
             onBufferUnderrun: (actualSize, desiredSize) => {
@@ -78,5 +78,9 @@ export default class Emulator {
     start() {
         this.frameTimer.start();
         this.speakers.start();
+    }
+    stop() {
+        this.frameTimer.stop();
+        this.speakers.stop();
     }
 }

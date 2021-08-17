@@ -43,6 +43,7 @@
     "postcss": "^8.3.0",
     "postcss-cli": "^8.3.1",
     "raven-js": "^3.27.2",
-    "regenerator-runtime": "^0.13.9"
+    "regenerator-runtime": "^0.13.9",
+    "ringbufferjs": "^2.0.0"
   }
 }
