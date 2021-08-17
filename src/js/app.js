@@ -1,8 +1,11 @@
-//window.onscroll = function() {myFunction()};
-//lista tytułow
+
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+
+/**
+ * Download games covers from server and inserting them into document
+ */
 const getGames = async () => {
   const bag = document.querySelector(".row");
   //const games = new Array();
@@ -18,6 +21,7 @@ const getGames = async () => {
       img = document.createElement("img");
       title.classList.add("title");
       img.src = `http://localhost:8081/${game}/${game}.jpg`;
+      img.name = game;
       title.appendChild(img);
       bag.appendChild(title);
       console.log(`http://localhost:8081/games/${game}.jpg`);
@@ -39,22 +43,22 @@ getGames()
     const table = document.querySelector(".row");
 
 
-    //przycisk play 
+    //Play button
     const play_btn = document.createElement("div");
     play_btn.className = "playBtn";
     play_btn.innerHTML = "Play";
 
 
-    //przycisk cofnij
+    //Back button
     const back_btn = document.createElement("div");
     back_btn.className = "backBtn";
     back_btn.innerHTML = "Back";
 
-    //element blurujący ekran z-index 5 
+    //Blur screen element
     const blur = document.createElement("div");
     blur.className = "blur";
 
-
+    //Style tag which contains position of specific title 
     const style = document.createElement('style');
     style.type = 'text/css';
     let i = 0;
@@ -62,10 +66,13 @@ getGames()
 
 
 
-    //dodawanie klasy CSS do elementu
-
+    
+    /**
+     * Add css class which contain element position to parent element of passed IMG element 
+     * @param {IMG} element 
+     */
     const addPos = function (element) {
-      //style.innerHTML += '.imgAnm' + i + ' img { left: ' + element.children[0].x + "px" + '; top: ' + (element.children[0].y) + "px" + '; transition: left 1s linear, top 1s linear;  } ';
+     
       style.innerHTML += '.imgAnm' + i + ' img { left: ' + element.x + "px" + '; top: ' + (element.y) + "px" + '; transition: left 1s linear, top 1s linear;  } ';
       document.getElementsByTagName('head')[0].appendChild(style);
 
@@ -77,7 +84,10 @@ getGames()
       i++;
     };
 
-    const back = function () {
+    /**
+     * Determinate how back button works
+     */
+    const back = () => {
 
       chosen.classList.remove("chosen");
       table.style.pointerEvents = "";
@@ -86,43 +96,47 @@ getGames()
       back_btn.remove();
       play_btn.remove();
       
-      //addPos(chosen.children[0]);
     };
 
-    const play = function () {
+    /**
+     * Determinate how back button works
+     */
+    const play = () => {
       console.log("play");
     };
-    //zaznaczony tytuł
+    
     let chosen = {};
 
     titles.forEach(element => {
-      element.addEventListener("click", function (e) {
+      /** 
+       * Determinate action after click on a title
+       */
+      element.addEventListener("click", (e) => {
         
         addPos(e.target);
         //console.dir(e.target);
 
         element.classList.add("chosen");
-        //console.dir(element);
+        
+        //Remove class given by addPos() to triger annimation and disable pointer events of all titles
         const classes = element.className.split(" ");
         element.classList.remove(classes[1]);
-        chosen = this;
+        chosen = e.target.parentElement;
         table.style.pointerEvents = "none";
 
-        //wylaczanie scroola 
+        //Disable scrolling
         document.body.style.overflow = 'hidden';
-        //document.querySelector('html').scrollTop = window.scrollY;
-        //**** */
+        
 
 
-        //blur.style.top = window.scrollY;
+        //Build sellection screen
         document.body.insertBefore(blur, document.body.lastChild);
         document.body.insertBefore(play_btn, document.body.lastChild);
         document.body.insertBefore(back_btn, document.body.lastChild);
         back_btn.addEventListener("click", back);
         play_btn.addEventListener("click", play);
 
-        //element.style +=" top: calc(50% - "+rect.height/2+") ; left: calc(50% - "+rect.width/2+") ;"; 
-        //element.style +=" top: 50% ; left: 50% ;"; 
+        
 
 
       });
