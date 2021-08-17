@@ -1,6 +1,7 @@
 
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import "./Emulator";
 
 
 /**
@@ -54,9 +55,24 @@ getGames()
     back_btn.className = "backBtn";
     back_btn.innerHTML = "Back";
 
+    //Return button
+    const return_btn = document.createElement("div");
+    return_btn.className = "returnBtn";
+    return_btn.innerHTML = "Return";
+
     //Blur screen element
     const blur = document.createElement("div");
     blur.className = "blur";
+
+    //gameScree background element
+    const gameScreen = document.createElement("div");
+    gameScreen.classList.add("gameScreen");
+
+    //Screen where a game is played
+    const screen = document.createElement("canvas");
+
+    //
+    const emulator = new Emulator(); 
 
     //Style tag which contains position of specific title 
     const style = document.createElement('style');
@@ -95,6 +111,8 @@ getGames()
       blur.remove();
       back_btn.remove();
       play_btn.remove();
+      gameScreen.remove();
+      gameScreen.classList.remove("active");
       
     };
 
@@ -102,7 +120,24 @@ getGames()
      * Determinate how back button works
      */
     const play = () => {
-      console.log("play");
+
+      //gameScreen.style.backgroundColor ="rgba(255,255,255,0.0)";
+      
+      
+      gameScreen.classList.add("active");
+      document.body.insertBefore(return_btn, document.body.firstChildlastChild);
+      return_btn.addEventListener("click", ret);
+
+      //gameScreen.style.backgroundColor = "rgba(0,0,0,1.0)";
+    };
+
+    /**
+     * Determinate how return button works
+     */
+    const ret = () => {
+      back();
+      return_btn.remove();
+      console.log("jestem");
     };
     
     let chosen = {};
@@ -133,6 +168,7 @@ getGames()
         document.body.insertBefore(blur, document.body.lastChild);
         document.body.insertBefore(play_btn, document.body.lastChild);
         document.body.insertBefore(back_btn, document.body.lastChild);
+        document.body.insertBefore(gameScreen, document.body.firstChildlastChild);
         back_btn.addEventListener("click", back);
         play_btn.addEventListener("click", play);
 
@@ -144,5 +180,4 @@ getGames()
     });
 
 
-    console.log("to jest to zajebiście śmiga, jak zła");
   });

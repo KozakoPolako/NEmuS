@@ -161,6 +161,30 @@ img {
     letter-spacing: 2px;
     text-align: center;
     cursor: pointer;
+    user-select: none;
+   }
+   .returnBtn{
+    position: fixed;
+    z-index: 21;
+    top: 60px;
+    left: 150px;
+    
+    transform:translate(-50%,-50%);
+    font-size: 30px;
+    color: #f0f0f0;
+    border: 7px solid;
+    border-radius: 100px;
+    width: 200px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: auto;
+    box-shadow: 0 5px 5px black;    
+    margin-top: 3px;
+    padding-top: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
    }
    
   .blur{
@@ -174,6 +198,23 @@ img {
     height:100%;
     backdrop-filter: blur(10px);
     
+  }
+  .gameScreen{
+    position: fixed;
+    z-index: -2;
+    top:  0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.0);
+
+    transition: background-color 1s ease-out;
+
+  }
+
+  .gameScreen.active {
+    z-index: 20;
+    background-color:rgba(0,0,0,1.0);
   }
   
   .backBtn{
@@ -196,7 +237,7 @@ img {
     letter-spacing: 2px;
     text-align: center;
     cursor: pointer;
-
+    user-select: none;
     
   }
   .playBtn:hover {
@@ -204,5 +245,8 @@ img {
   }
 
   .backBtn:hover {
+    transform:translate(-50%,-50%) scale(1.1);
+  }
+  .returnBtn:hover{
     transform:translate(-50%,-50%) scale(1.1);
   }
