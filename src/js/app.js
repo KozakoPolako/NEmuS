@@ -11,7 +11,7 @@ const getGames = async () => {
   const bag = document.querySelector(".row");
   //const games = new Array();
   try {
-    const res = await fetch("http://localhost:8081/list");
+    const res = await fetch("http://192.168.0.246:8081/list");
     const games = await res.json();
     console.dir(games);
     let title;
@@ -21,11 +21,11 @@ const getGames = async () => {
       title = document.createElement("div");
       img = document.createElement("img");
       title.classList.add("title");
-      img.src = `http://localhost:8081/${game}/${game}.jpg`;
+      img.src = `http://192.168.0.246:8081/${game}/${game}.jpg`;
       img.name = game;
       title.appendChild(img);
       bag.appendChild(title);
-      console.log(`http://localhost:8081/games/${game}.jpg`);
+      console.log(`http://192.168.0.246:8081/games/${game}.jpg`);
     });
   } catch(e) {
     console.error(e);
@@ -131,7 +131,7 @@ getGames()
       gameScreen.appendChild(screen);
 
       try {
-        const res = await fetch(`http://localhost:8081/${chosen.children[0].name}/${chosen.children[0].name}.nes`);
+        const res = await fetch(`http://192.168.0.246:8081/${chosen.children[0].name}/${chosen.children[0].name}.nes`);
         const blob = await res.blob();
         emulator.loadGame(blob);
         emulator.start();

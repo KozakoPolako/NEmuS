@@ -13,7 +13,7 @@
              baseDir: "./dist"
          },
          notify: false,
-         host: "172.20.10.6",
+         host: "192.168.0.246",
          port: 3000,
          open: false
      });
