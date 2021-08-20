@@ -1,6 +1,6 @@
 # NEmuS
 
-NEmuS is web base NES console emulator. It's made for web development practice.
+NEmuS is web base NES console emulator. It was made for web development practice.
 
 My project uses the [jsnes](jsnes) emulator engine.
 NEmuS uses express server to download game catalog and roms  
