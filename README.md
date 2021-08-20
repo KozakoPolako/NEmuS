@@ -17,6 +17,8 @@ NEmuS uses express server to download game catalog and roms
 2. To add some games, You need to make a new folder to ``` ./server/games``` directory and put two files in it:
     - cover art in jpg format.
     - rom in nes format.  
+
+
 E.g:
 
 NEmuS/  
