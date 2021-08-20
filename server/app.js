@@ -17,6 +17,8 @@ app.get("/list", (req,res) => {
 
     fs.readdir("./games", (err,files) => {
         res.json(files);
+        console.log(files);
+        console.log(err);
     });
     //res.send("Print list on the server");
 
